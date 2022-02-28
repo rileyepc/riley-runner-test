@@ -21,4 +21,4 @@ jobs:
       
     - name: github env
       shell: powershell
-      run: echo "ComPort=$($((Get-Content C:\Users\RileyTurner\Desktop\baretest_example.txt 1).comport)"  >> $Env:GITHUB_ENV
+      run:  Get-Content -Path C:\Users\RileyTurner\Desktop\baretest_example.txt -Tail 1 >> $Env:GITHUB_ENV
