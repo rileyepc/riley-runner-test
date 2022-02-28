@@ -15,3 +15,6 @@ jobs:
     
     - name: test
       run: echo "This is a test."
+      
+    - name: cd file
+      run: echo "Get-Content -Path C:\Users\RileyTurner\Desktop\baretest_example.txt -Tail 1"
