@@ -17,4 +17,8 @@ jobs:
       run: echo "This is a test."
       
     - name: cd file
+      run: Get-Content -Path C:\Users\RileyTurner\Desktop\baretest_example.txt -Tail 1
+      
+    - name: github env
+      shell: powershell
       run: echo "ComPort=$($(Get-Content -Path C:\Users\RileyTurner\Desktop\baretest_example.txt -Tail 1)"  >> $Env:GITHUB_ENV
