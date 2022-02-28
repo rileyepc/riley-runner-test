@@ -1,0 +1,17 @@
+name: CI
+on:
+  push:
+    branches:
+      - "**"
+    tags:
+      - "**"
+  pull_request:
+    types: [ labeled ]
+
+jobs:
+  prod-check:
+    runs-on: windows
+    steps:
+    
+    - name: test
+      run: echo "This is a test."
