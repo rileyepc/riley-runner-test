@@ -10,7 +10,7 @@ on:
 
 jobs:
   prod-check:
-    runs-on: windows
+    runs-on: self-hosted
     steps:
     
     - name: test
