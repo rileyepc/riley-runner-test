@@ -19,19 +19,11 @@ jobs:
     - name: cd file
       run: Get-Content -Path C:\Users\RileyTurner\Desktop\baretest_example.txt -Tail 1
      
-    - name: Set Variables
-      run: |
-      echo "Working Path: ${Env:GITHUB_WORKSPACE}"
-      $branchName = $Env:GITHUB_REF -replace 'refs/heads/', ''
-      echo "Branch: ${branchName}"
-      echo "CURRENT_BRANCH=${branchName}" >> $Env:GITHUB_ENV
+    - name: runner name to var
+      run: echo "Deploying to production server on branch ${Env:RUNNER_NAME}"
+      
+    - name: one
+      run: echo "FileContents=$(cat ${Env:RUNNER_NAME})" >> $Env:GITHUB_ENV
 
-    - name: Output Variables
-      run: |
-      echo "${Env:CURRENT_BRANCH}"
-
-    - name: Checkout Repo
-      uses: actions/checkout@v2
-      with:
-        repository: 'riley-runner-test'
-    ref: ${{ env.CURRENT_BRANCH }}
+    - name: onefive
+      run: echo "${Env:FileContents}"
