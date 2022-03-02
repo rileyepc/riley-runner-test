@@ -31,5 +31,9 @@ jobs:
     - name: jsontwo
       run: echo "${Env:jsonComport}"
       
+    - name: conditional
+      if: contains(C:\Users\RileyTurner\Desktop\baretest_example.txt, '0 failed')
+      run: echo "pass 0 fails"
+      
    # - name: file content to comport
     #  run: FileComport=$($(Get-Content C:\Users\RileyTurner\Desktop\baretest_example.txt).comport) >> $Env:GITHUB_ENV
