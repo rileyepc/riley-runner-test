@@ -26,6 +26,9 @@ jobs:
       run: |
         pwd
         echo "jsonComport=$($(Get-Content .\${Env:RUNNER_NAME}.json | ConvertFrom-Json).comport)"  >> $Env:GITHUB_ENV
+        
+    - name: jsontwo
+      run: echo "${Env:jsonComport}"
       
    # - name: file content to comport
     #  run: FileComport=$($(Get-Content C:\Users\RileyTurner\Desktop\baretest_example.txt).comport) >> $Env:GITHUB_ENV
