@@ -23,4 +23,4 @@ jobs:
       run: echo "Deploying to production server on branch ${Env:RUNNER_NAME}"
       
     - name: file content to comport
-      run: FileComport=$($(Get-Content -Path C:\Users\RileyTurner\Desktop\baretest_example.txt -Tail 1).comport) >> $Env:GITHUB_ENV
+      run: FileComport=$($(Get-Content C:\Users\RileyTurner\Desktop\baretest_example.txt -Tail 1).comport) >> $Env:GITHUB_ENV
