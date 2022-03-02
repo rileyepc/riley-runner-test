@@ -22,6 +22,9 @@ jobs:
     - name: runner name to var
       run: echo "Deploying to production server on branch ${Env:RUNNER_NAME}"
       
+    - name: one
+      run: echo "FileContents=$(cat ${Env:RUNNER_NAME})" >> $Env:GITHUB_ENV
+      
     - name: json
       run: |
         pwd
