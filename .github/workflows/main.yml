@@ -32,7 +32,7 @@ jobs:
       run: echo "${Env:jsonComport}"
       
     - name: conditional
-      if: "!(contains(env.jsonComport, '0 fails')"
+      if: "!contains(env.jsonComport, '0 fails')"
       run: echo "FAIL 0 fails"
       
    # - name: file content to comport
