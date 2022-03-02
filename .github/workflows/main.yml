@@ -22,5 +22,8 @@ jobs:
     - name: runner name to var
       run: echo "Deploying to production server on branch ${Env:RUNNER_NAME}"
       
-    - name: file content to comport
-      run: FileComport=$($(Get-Content C:\Users\RileyTurner\Desktop\baretest_example.txt).comport) >> $Env:GITHUB_ENV
+    - name: one
+      run: echo "FileContents=$(cat ${Env:RUNNER_NAME})" >> $Env:GITHUB_ENV
+      
+   # - name: file content to comport
+    #  run: FileComport=$($(Get-Content C:\Users\RileyTurner\Desktop\baretest_example.txt).comport) >> $Env:GITHUB_ENV
