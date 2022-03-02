@@ -38,7 +38,7 @@ jobs:
     - name: pl
       run: |
         pwd
-        echo "FileContent=$(Get-Content .\baretest.example.txt)" >> $Env:GITHUB_ENV
+        echo "FileContent=$(Get-Content .\baretest_example.txt)" >> $Env:GITHUB_ENV
       
    # - name: file content to comport
     #  run: FileComport=$($(Get-Content C:\Users\RileyTurner\Desktop\baretest_example.txt).comport) >> $Env:GITHUB_ENV
