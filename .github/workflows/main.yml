@@ -44,7 +44,7 @@ jobs:
       run: echo "${Env:FileContents}"
       
     - name: conditional with baretest-example
-      if: "!contains(env.FileContents, '0 failed') || !contains(env.FileContents, '0 error')"
+      if: "!contains(env.FileContents, '0 failed')"
       run: echo "FAIL there ARE errors or failures"
       
    # - name: file content to comport
