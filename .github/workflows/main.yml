@@ -47,5 +47,9 @@ jobs:
       if: "!contains(env.FileContents, '0 failed')"
       run: echo "FAIL there ARE errors or failures"
       
+    - name: conditional with baretest-example 2
+      if: env.FileContents != '0 failed'
+      run: echo "FAIL there ARE errors or failures"
+      
    # - name: file content to comport
     #  run: FileComport=$($(Get-Content C:\Users\RileyTurner\Desktop\baretest_example.txt).comport) >> $Env:GITHUB_ENV
