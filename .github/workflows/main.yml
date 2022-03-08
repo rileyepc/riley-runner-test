@@ -43,6 +43,9 @@ jobs:
     - name: baretest_example two
       run: echo "${Env:FileContents}"
       
+    - name: conditional with baretest-example
+      if: "!contains(env.FileContents, '0 failed')"
+      run: echo "FAIL there ARE errors or failures"
       
     - name: conditional with baretest-example 2
       if: contains(env.FileContents, '0 failed')
