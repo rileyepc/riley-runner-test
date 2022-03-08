@@ -48,6 +48,6 @@ jobs:
       run: echo "FAIL there ARE errors or failures"
       
     - name: conditional with baretest-example 2
-      if: TF_fails = $(contains(env.FileContents, '0 failed')) >> $Env:GITHUB_ENV
+      if: contains(env.FileContents, '0 failed')
       run: echo "PASS there ARE NO errors or failures"
       
