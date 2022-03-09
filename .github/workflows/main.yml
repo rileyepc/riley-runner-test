@@ -38,7 +38,7 @@ jobs:
     - name: env baretest_example
       run: |
         pwd
-        echo "FileContent=$(Get-Content -Path .\baretest_example.txt)" >> $Env:GITHUB_ENV
+        echo "FileContent=$(Get-Content .\baretest_example.txt)" >> $Env:GITHUB_ENV
         
     - name: baretest_example two
       run: echo "${Env:FileContents}"
@@ -47,6 +47,10 @@ jobs:
       if: contains(env.FileContents, '1 failed')
       run: echo "FAIL there ARE errors or failures"
       
+    - name: get string fail
+      run: |
+        pwd
+        Select-String -Path C:\Users\RileyTurner\Desktop\baretest_example.txt -Pattern '* failed'
       
     - name: save fail as github env
       if: contains(env.FileContent, '1 failed')
