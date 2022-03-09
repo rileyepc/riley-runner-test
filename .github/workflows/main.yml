@@ -53,5 +53,5 @@ jobs:
       if: contains(env.FileContent, '1 failed')
       run: |
         pwd
-        echo "FailContent=$(Select-String .\baretest_example.txt '1 failed')" >> $Env:GITHUB_ENV
+        echo "FailContent=$(Select-String -Path .\baretest_example.txt -Pattern '1 failed')" >> $Env:GITHUB_ENV
       
