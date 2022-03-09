@@ -51,3 +51,9 @@ jobs:
       if: contains(env.FileContents, '0 failed')
       run: echo "PASS there ARE NO errors or failures"
       
+    - name: save fail as github env
+      if: contains(env.FileContent, '* failed')
+      run: |
+        pwd
+        echo "FailContent=$(Select-String .\baretest_example.txt '* failed')" >> $Env:GITHUB_ENV
+      
