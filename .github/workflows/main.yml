@@ -44,7 +44,7 @@ jobs:
       run: echo "${Env:FileContents}"
       
     - name: conditional with baretest-example
-      if: "!contains(env.FileContents, '0 failed')"
+      if: contains(env.FileContents, '* failed')
       run: echo "FAIL there ARE errors or failures"
       
       
@@ -52,5 +52,5 @@ jobs:
       if: contains(env.FileContent, '* failed')
       run: |
         pwd
-        echo "FailContent=$(Select-String .\baretest_example.txt '* failed')" >> $Env:GITHUB_ENV
+        echo "FailContent=$(Select-String .\baretest_example.txt '1 failed')" >> $Env:GITHUB_ENV
       
