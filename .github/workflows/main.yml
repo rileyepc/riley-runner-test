@@ -47,9 +47,6 @@ jobs:
       if: "!contains(env.FileContents, '0 failed')"
       run: echo "FAIL there ARE errors or failures"
       
-    - name: conditional with baretest-example 2
-      if: contains(env.FileContents, '0 failed')
-      run: echo "PASS there ARE NO errors or failures"
       
     - name: save fail as github env
       if: contains(env.FileContent, '* failed')
