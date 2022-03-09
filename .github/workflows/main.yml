@@ -31,9 +31,6 @@ jobs:
     - name: jsontwo
       run: echo "${Env:jsonComport}"
       
-    - name: conditional
-      if: "!contains(env.jsonComport, '0 fails')"
-      run: echo "FAIL 0 fails"
       
     - name: env baretest_example
       run: |
@@ -44,7 +41,7 @@ jobs:
       run: echo "${Env:FileContents}"
       
     - name: conditional with baretest-example
-      if: contains(env.FileContents, '1 failed')
+      if: "contains(env.FileContents, '1 failed')"
       run: echo "FAIL there ARE errors or failures"
       
     - name: get string fail
