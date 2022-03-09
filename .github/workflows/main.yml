@@ -50,8 +50,7 @@ jobs:
         Select-String -Path C:\Users\RileyTurner\Desktop\baretest_example.txt -Pattern '1 failed'
       
     - name: save fail as github env
-      if: contains(env.FileContent, '1 failed')
       run: |
         pwd
-        echo "FailContent=$(Select-String -Path .\baretest_example.txt -Pattern '1 failed')" >> $Env:GITHUB_ENV
+        echo "FailContent=$(Select-String -Path .\baretest_example.txt -Pattern '* failed')" >> $Env:GITHUB_ENV
       
