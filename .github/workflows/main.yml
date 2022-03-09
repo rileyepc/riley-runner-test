@@ -47,7 +47,7 @@ jobs:
     - name: get string fail
       run: |
         pwd
-        Select-String -Path C:\Users\RileyTurner\Desktop\baretest_example.txt -Pattern '* failed'
+        Select-String -Path C:\Users\RileyTurner\Desktop\baretest_example.txt -Pattern '1 failed'
       
     - name: save fail as github env
       if: contains(env.FileContent, '1 failed')
