@@ -35,7 +35,7 @@ jobs:
     - name: env baretest_example
       run: |
         pwd
-        echo "FileContent=$(Get-Content .\baretest_example.txt)" >> $Env:GITHUB_ENV
+        echo "FileContent=$(Get-Content -Path .\baretest_example.txt -Tail 1)" >> $Env:GITHUB_ENV
         
     - name: baretest_example two
       run: echo "${Env:FileContent}"
