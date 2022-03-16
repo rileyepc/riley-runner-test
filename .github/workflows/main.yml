@@ -44,10 +44,6 @@ jobs:
       if: contains(env.FileContent, '* failed')
       run: echo "FAIL there ARE errors or failures"
       
-    - name: env baretest_example
-      run: |
-        pwd
-        echo "FileContent2=$(Get-Content .\baretest_example.txt)" >> $Env:GITHUB_ENV
       
     - name: get fail content from file content
       run: |
