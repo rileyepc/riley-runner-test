@@ -47,10 +47,7 @@ jobs:
     - name: get string fail
       run: |
         pwd
-        Select-String -Path C:\Users\RileyTurner\Desktop\baretest_example.txt -Pattern '1 failed'
-      
-    - name: save fail as github env
-      run: echo "FailContent=${Env:FileContents}" >> $Env:GITHUB_ENV
+        echo "FailContent=$(Select-String -Path C:\Users\RileyTurner\Desktop\baretest_example.txt -Pattern '1 failed')" >> $Env.GITHUB_ENV
         
     - name: echo FailContent
       run: echo "${Env.FailContent}"
