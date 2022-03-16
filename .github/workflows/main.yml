@@ -44,7 +44,7 @@ jobs:
       if: contains(env.FileContent, '* failed')
       run: echo "FAIL there ARE errors or failures"
       
-    - name: get fiecontent to fail content
+    - name: get fail content from file content
       run: |
         pwd
         echo "FailContent = $(Get-Content .\baretest_example.txt | Select-String -Pattern "^\d failed")" >> $Env.GITHUB_ENV
