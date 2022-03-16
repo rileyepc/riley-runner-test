@@ -40,18 +40,8 @@ jobs:
     - name: baretest_example two
       run: echo "${Env:FileContent}"
       
-    - name: conditional with baretest-example
-      if: contains(env.FileContent, '* failed')
-      run: echo "FAIL there ARE errors or failures"
-      
-      
-    - name: get fail content from file content
+    - name: Match
       run: |
         pwd
-        echo "FailContent = $(Get-Content .\baretest_example.txt | Select-String -Pattern "\d failed")" >> $Env.GITHUB_ENV
-        
-    
-    
-    - name: echo FailContent
-      run: echo "${Env.FailContent}"
+        echo "${Env:FileContent} -Match "(?<failed>\d+(?= failed)).*(?<passed>\d+(?= passed)).*(?<skipped>\d+(?= skipped))"
       
