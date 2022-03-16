@@ -54,7 +54,7 @@ jobs:
         pwd
         echo "FailContent = $(Get-Content .\baretest_example.txt | Select-String -Pattern "\d failed")" >> $Env.GITHUB_ENV
         
-        
+    
     - name: echo FailContent
       run: echo "${Env.FailContent}"
       
