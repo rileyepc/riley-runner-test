@@ -52,7 +52,7 @@ jobs:
     - name: get fail content from file content
       run: |
         pwd
-        echo "FailContent = $(Get-Content .\baretest_example.txt | Select-String -Pattern "^\d failed")" >> $Env.GITHUB_ENV
+        echo "FailContent = $(Get-Content .\baretest_example.txt | Select-String -Pattern "\d failed")" >> $Env.GITHUB_ENV
         
         
     - name: echo FailContent
