@@ -44,8 +44,6 @@ jobs:
       run: |
         pwd
         ${Env:FileContent} -Match "(?<failed>\d+(?= failed)).*(?<passed>\d+(?= passed)).*(?<skipped>\d+(?= skipped))"
-        echo "Fails=$Matches.failed" >> $Env:GITHUB_ENV
+        echo "$Matches.failed"
     
-    - name: echo Fails
-      run: echo "${Env:Fails}"
       
