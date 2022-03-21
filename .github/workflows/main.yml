@@ -45,19 +45,20 @@ jobs:
         pwd
         ${Env:FileContent} -Match "(?<failed>\d+(?= failed)).*(?<passed>\d+(?= passed)).*(?<skipped>\d+(?= skipped))"
         echo "Fails=$($Matches.failed)" >> $Env:GITHUB_ENV
+        $Matches.failed
         
     - name: Match1 
       run: |
         pwd
         ${Env:FileContent} -Match "(?<failed>\d+(?= failed)).*(?<passed>\d+(?= passed)).*(?<skipped>\d+(?= skipped))"
-        echo "Skips=$($Matches.skipped)" >> $Env:GTHUB_ENV
-        $Matches.skipped
+        echo "Passed=$($Matches.passed)" >> $Env:GTHUB_ENV
+        $Matches.passed
         
       
     - name: Match failed echo
       run: echo "${Env:Fails}"
       
-    - name: Match skipped echo
-      run: echo "${Env:Skips}"
+    - name: Match passed echo
+      run: echo "${Env:Pass}"
     
       
