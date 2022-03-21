@@ -40,15 +40,6 @@ jobs:
     - name: baretest_example two
       run: echo "${Env:FileContent}"
       
-    - name: Match failed
-      run: |
-        pwd
-        ${Env:FileContent} -Match "(?<failed>\d+(?= failed))"
-        echo "Fails=$($Matches.failed)" >> $Env:GITHUB_ENV
-        $Matches.failed
-        
-    - name: Match failed echo
-      run: echo "${Env:Fails}"
         
     - name: Match skipped
       run: |
