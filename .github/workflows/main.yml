@@ -51,6 +51,7 @@ jobs:
         pwd
         ${Env:FileContent} -Match "(?<failed>\d+(?= failed)).*(?<passed>\d+(?= passed)).*(?<skipped>\d+(?= skipped))"
         echo "Skips=$($Matches.skipped)" >> $Env:GTHUB_ENV
+        $Matches.skipped
         
       
     - name: Match failed echo
