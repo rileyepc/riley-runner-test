@@ -49,7 +49,7 @@ jobs:
     - name: Match1 
       run: |
         pwd
-        ${Env:FileContent} -Match "(?<failed>\d+(?= failed)).*(?<passed>\d+(?= passed)).*(?<skipped>\d+(?= skipped))"
+        ${Env:FileContent} -Match "(?<skipped>\d+(?= skipped)).*(?<failed>\d+(?= failed)).*(?<passed>\d+(?= passed))"
         echo "Skips=$($Matches.skipped)" >> $Env:GTHUB_ENV
         
       
