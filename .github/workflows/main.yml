@@ -69,8 +69,8 @@ jobs:
     - name: Match passed echo
       run: echo "${Env:Pass}"
       
-    - name: if clasue
-      if: ((${env:Skipped} || ${env:fails}) > 0 )
+    - name: if clause
+      if: ($Skips> 0 )
       run: echo "test message"
     
       
