@@ -70,7 +70,7 @@ jobs:
       run: echo "${Env:Pass}"
       
     - name: if clause
-      if: (${Skips} > 0 )
+      if: (${Env:Skips} > 0 )
       run: echo "test message"
     
       
