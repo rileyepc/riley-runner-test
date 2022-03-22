@@ -53,7 +53,7 @@ jobs:
       run: |
         pwd
         ${Env:FileContent} -Match ".(?<skipped>\d+(?= skipped))"
-        echo "Skips=$($Matches.skipped)" >> $Env:GTHUB_ENV
+        echo "Skips=$($Matches.skipped)" >> $Env:GITHUB_ENV
         $Matches.skipped
         
     - name: Match skipped echo
@@ -63,7 +63,7 @@ jobs:
       run: |
         pwd
         ${Env:FileContent} -Match "(?<passed>\d+(?= passed))"
-        echo "Pass=$($Matches.passed)" >> $Env:GTHUB_ENV
+        echo "Pass=$($Matches.passed)" >> $Env:GITHUB_ENV
         $Matches.passed
       
     - name: Match passed echo
