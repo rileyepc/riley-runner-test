@@ -70,10 +70,14 @@ jobs:
       run: echo "${Env:Pass}"
       
     - name: if clause fails
-      if: ${{ env.Fails == '0' }}
-      run: echo "0 fails thus this is a pass"
+      if: ${{ env.Fails != '0' }}
+      with:
+        script: |
+          core.setFailed('Fails is not equal to 0!)
     
     - name: if clause skips
-      if: ${{ env.Skips == '0'}}
-      run: echo "0 skips this is a pass"
+      if: ${{ env.Skips != '0'}}
+      with:
+        script: |
+          core.setFailed('Skips is not equal to 0!)
       
