@@ -69,8 +69,11 @@ jobs:
     - name: Match passed echo
       run: echo "${Env:Pass}"
       
-    - name: if clause
+    - name: if clause fails
       if: ${{ env.Fails == '0' }}
       run: echo "0 fails thus this is a pass"
     
+    - name: if clause skips
+      if: ${{ env.Skips == '0'}}
+      run: echo "0 skips this is a pass"
       
