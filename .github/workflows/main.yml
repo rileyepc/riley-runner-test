@@ -71,15 +71,9 @@ jobs:
       
     - name: if clause fails
       if: ${{ env.Fails != '0' }}
-      uses: actions/checkout@v1
-      with: 
-        script: |
-          core.setFailed('Fails is not equal to 0!)
+      run: exit 1
     
     - name: if clause skips
       if: ${{ env.Skips != '0'}}
-      uses: actions/checkout@v1
-      with: 
-        script: |
-          core.setFailed('Skips is not equal to 0!)
+      run: exit 1
       
