@@ -71,13 +71,15 @@ jobs:
       
     - name: if clause fails
       if: ${{ env.Fails != '0' }}
-      with:
+      uses: actions/github-script@v3
+      with: 
         script: |
           core.setFailed('Fails is not equal to 0!)
     
     - name: if clause skips
       if: ${{ env.Skips != '0'}}
-      with:
+      uses: actions/github-script@v3
+      with: 
         script: |
           core.setFailed('Skips is not equal to 0!)
       
