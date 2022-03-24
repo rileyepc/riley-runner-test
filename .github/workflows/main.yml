@@ -71,9 +71,13 @@ jobs:
       
     - name: if clause fails
       if: ${{ env.Fails != '0' }}
-      run: exit 1
+      run: |
+        echo "Greater than 0 fails"
+        exit 1
     
     - name: if clause skips
       if: ${{ env.Skips != '0'}}
-      run: exit 1
+      run: |
+        echo "Greater than 0 skips"
+        exit 1
       
