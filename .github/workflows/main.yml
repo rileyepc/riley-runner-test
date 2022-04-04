@@ -12,33 +12,19 @@ jobs:
   prod-check:
     runs-on: self-hosted
     steps:
-    
-    - name: test
-      run: echo "This is a test."
-      
-    - name: cd file
-      run: Get-Content -Path C:\Users\RileyTurner\Desktop\baretest_example.txt -Tail 1
      
     - name: runner name to var
       run: echo "Deploying to production server on branch ${Env:RUNNER_NAME}"
-      
-      
+          
     - name: json
       run: |
         pwd
         echo "jsonComport=$($(Get-Content .\${Env:RUNNER_NAME}.json | ConvertFrom-Json).comport)"  >> $Env:GITHUB_ENV
-        
-    - name: jsontwo
-      run: echo "${Env:jsonComport}"
-      
       
     - name: env baretest_example
       run: |
         pwd
         echo "FileContent=$(Get-Content -Path .\baretest_example.txt -Tail 1)" >> $Env:GITHUB_ENV
-        
-    - name: baretest_example two
-      run: echo "${Env:FileContent}"
         
     - name: Match failed
       run: |
@@ -49,6 +35,7 @@ jobs:
         
     - name: Match failed echo
       run: echo "${Env:Fails}"
+      
     - name: Match skipped
       run: |
         pwd
