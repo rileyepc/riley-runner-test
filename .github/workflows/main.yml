@@ -1,70 +1,14 @@
-name: CI
-on:
-  push:
-    branches:
-      - "**"
-    tags:
-      - "**"
-  pull_request:
-    types: [ labeled ]
-
+name: Generate random failure
+on: push
 jobs:
-  prod-check:
-    runs-on: self-hosted
+  randomly-failing-job:
+    runs-on: ubuntu-latest
     steps:
-     
-    - name: runner name to var
-      run: echo "Deploying to production server on branch ${Env:RUNNER_NAME}"
-          
-    - name: json
-      run: |
-        pwd
-        echo "jsonComport=$($(Get-Content .\${Env:RUNNER_NAME}.json | ConvertFrom-Json).comport)"  >> $Env:GITHUB_ENV
-      
-    - name: env baretest_example
-      run: |
-        pwd
-        echo "FileContent=$(Get-Content -Path .\baretest_example.txt -Tail 1)" >> $Env:GITHUB_ENV
-        
-    - name: Match failed
-      run: |
-        pwd
-        ${Env:FileContent} -Match "(?<failed>\d+(?= failed))"
-        echo "Fails=$($Matches.failed)" >> $Env:GITHUB_ENV
-        $Matches.failed
-        
-    - name: Match failed echo
-      run: echo "${Env:Fails}"
-      
-    - name: Match skipped
-      run: |
-        pwd
-        ${Env:FileContent} -Match ".(?<skipped>\d+(?= skipped))"
-        echo "Skips=$($Matches.skipped)" >> $Env:GITHUB_ENV
-        $Matches.skipped
-        
-    - name: Match skipped echo
-      run: echo "${Env:Skips}"
-        
-    - name: Match passed
-      run: |
-        pwd
-        ${Env:FileContent} -Match "(?<passed>\d+(?= passed))"
-        echo "Pass=$($Matches.passed)" >> $Env:GITHUB_ENV
-        $Matches.passed
-      
-    - name: Match passed echo
-      run: echo "${Env:Pass}"
-      
-    - name: if clause fails
-      if: ${{ env.Fails != '0' }}
-      run: |
-        echo "Greater than 0 fails"
-        exit 1
-    
-    - name: if clause skips
-      if: ${{ env.Skips != '0'}}
-      run: |
-        echo "Greater than 0 skips"
-        exit 1
-      
+      - id: checkout
+        uses: actions/checkout@v3
+      - name: Generate 0 or 1
+        id: generate_number
+        run:  echo "::set-output name=random_number::$(($RANDOM % 2))"
+      - name: Pass or fail
+        run: |
+          if [[ ${{ steps.generate_number.outputs.random_number }} == 0 ]]; then exit 0; else exit 1; fi
