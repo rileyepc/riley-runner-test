@@ -23,3 +23,6 @@ jobs:
         run: |
           echo "Output = ${{steps.message.outcome}}" >> $Env:GITHUB_ENV
           
+      - name: echo outcome
+        run: echo "{$Env:Output}"
+          
