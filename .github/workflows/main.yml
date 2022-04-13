@@ -27,5 +27,6 @@ jobs:
         run: echo "{$Env:Output}"
           
       - name: pass or fail
-        run: |
-          if [[${{steps.message.outcome}} != 'success']] then exit 0; else exit 1; fi
+        if: ${{steps.message.outcome}} != 'success'
+        run: exit 1
+           
