@@ -21,4 +21,5 @@ jobs:
       
       - name: print steps
         run: |
-          echo "${{steps.message.outcome}}"
+          echo "Output = ${{steps.message.outcome}}" >> $Env:GITHUB_ENV
+          
