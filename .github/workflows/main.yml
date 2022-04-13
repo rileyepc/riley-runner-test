@@ -1,14 +1,25 @@
-name: Generate random failure
-on: push
+name: CI
+on:
+  push:
+    branches:
+      - "**"
+    tags:
+      - "**"
+  pull_request:
+    types: [ labeled ]
+    
 jobs:
-  randomly-failing-job:
-    runs-on: ubuntu-latest
+  prod-check:
+    name: Run & Deploy Doxygen
+    runs-on: self-hosted
+    container: docker://epcpower/ccstudio9:pr3
     steps:
-      - id: checkout
-        uses: actions/checkout@v3
-      - name: Generate 0 or 1
-        id: generate_number
-        run:  echo "::set-output name=random_number::$(($RANDOM % 2))"
-      - name: Pass or fail
+      - uses: actions/checkout@v2
+      - name: Doxygen
         run: |
-          if [[ ${{ steps.generate_number.outputs.random_number }} == 0 ]]; then exit 0; else exit 1; fi
+          doxygen dox/DoxyFile
+          pwd
+          ls
+          ls html
+          ls
+        
