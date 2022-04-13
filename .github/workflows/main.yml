@@ -10,16 +10,15 @@ on:
     
 jobs:
   prod-check:
-    name: Run & Deploy Doxygen
-    runs-on: ubuntu-latest
-    container: docker://epcpower/ccstudio9:pr3
+    runs-on: self-hosted
     steps:
       - uses: actions/checkout@v2
-      - name: Doxygen
-        run: |
-          doxygen dox/DoxyFile
-          pwd
-          ls
-          ls html
-          ls
+        id: checkout
         
+      - name: echo message
+        id: message
+        run: echo "this is a test"
+      
+      - name: print steps
+        run: |
+          echo "${{steps.message.outcome}}"
